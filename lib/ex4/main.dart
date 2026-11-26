@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 
+import './jokes.dart';
+
 Color appColor = Colors.green[300] as Color;
+bool globalFavorite = false;
+
+List<Jokes> data = dataJokes;
+
+List<Widget> getLabel() {
+  return data.map((d) => FavoriteCard(title: d.title, description: d.description)).toList();
+}
 
 void main() => runApp(MaterialApp(
       home: Scaffold(
@@ -9,15 +18,17 @@ void main() => runApp(MaterialApp(
           backgroundColor: appColor,
           title: const Text("Favorite Jokes"),
         ),
-        body: const Column(
-          children: [FavoriteCard(), FavoriteCard(), FavoriteCard()],
-        ),
+        body: SingleChildScrollView( child: Column(children: getLabel()))
       ),
     ));
 
 class FavoriteCard extends StatefulWidget {
+  final String title;
+  final String description;
   const FavoriteCard({
     super.key,
+    required this.title,
+    required this.description
   });
 
   @override
@@ -25,12 +36,22 @@ class FavoriteCard extends StatefulWidget {
 }
 
 class _FavoriteCardState extends State<FavoriteCard> {
+
   bool _isFavorite = false;
 
   void onFavoriteClick() {
-    setState(() {
-      _isFavorite = !_isFavorite;
-    });
+    if (globalFavorite && _isFavorite) {
+      globalFavorite = false;
+      setState(() {
+        _isFavorite = !_isFavorite;
+      });
+    } else if (!globalFavorite && !_isFavorite) {
+      globalFavorite = true;
+      setState(() {
+        _isFavorite = !_isFavorite;
+      });
+    }
+    
   }
  
   @override

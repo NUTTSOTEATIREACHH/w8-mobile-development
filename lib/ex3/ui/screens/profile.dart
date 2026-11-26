@@ -5,6 +5,7 @@ import '../theme/theme.dart';
 import '../../data/profile_data.dart';
 
 class ProfileApp extends StatelessWidget {
+  
 
   ProfileApp({super.key});
 
@@ -22,7 +23,8 @@ class ProfileApp extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Center(
+      body: SingleChildScrollView(
+        child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -53,6 +55,7 @@ class ProfileApp extends StatelessWidget {
           ],
         ),
       ),
+      )
     );
   }
 }
