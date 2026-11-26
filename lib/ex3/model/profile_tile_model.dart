@@ -19,5 +19,7 @@ class TileData {
   final String title;
   final String value;
 
+  // String data;
+
   TileData({required this.icon, required this.title, required this.value});
 }

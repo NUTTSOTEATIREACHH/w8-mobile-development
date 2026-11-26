@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'ui/screens/profile.dart';
  
 void main() {
-  runApp(const MaterialApp(
+  runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: ProfileApp(),
   ));
